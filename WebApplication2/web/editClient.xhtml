@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Edit Client</title>
+    </h:head>
+    <h:body>
+      <h:form> 
+        <h:message for="clientForm" style="color:red;" /> 
+        <h:panelGrid columns="2" id="clientForm"> 
+            <h:outputLabel value="firs name"/> 
+            <h:inputText id="fname" value="#{client.fname}" required="true"/>
+            
+            <h:outputLabel value="last name"/> 
+            <h:inputText id="lname" value="#{client.lname}" required="true"/>
+            
+            <h:outputLabel value="email"/> 
+            <h:inputText id="mail" value="#{client.mail}" required="true"/>
+            
+            <h:outputLabel value="discount %"/> 
+            <h:selectOneMenu value="#{client.discount}" >
+                <f:selectItems value="#{client.discounts}" />
+            </h:selectOneMenu>
+        </h:panelGrid> 
+        <h:commandButton action="clientList?faces-redirect=true" value="Save"
+                         actionListener="#{client.saveClient}"/> 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h:commandButton action="clientList?faces-redirect=true" value="Cancel"
+                         actionListener="#{client.cancel}" immediate="true"/>
+      </h:form>
+    </h:body>
+</html>
+
